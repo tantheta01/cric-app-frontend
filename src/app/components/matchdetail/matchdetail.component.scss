@@ -1,0 +1,59 @@
+.demo-table {
+    position:absolute;
+    width: 40%;
+    left: 2%;
+    top: 4%;
+  }
+  
+  .mat-column-demo-batter {
+    // width: 32px;
+    border-right: 10px solid black;
+    padding-right: 24px;
+    text-align: center;
+  }
+  
+  .mat-column-demo-runs {
+    padding-left: 16px;
+    font-size: 20px;
+  }
+  
+  .mat-column-demo-fours {
+    font-style: italic;
+  }
+  
+  .mat-column-demo-sixes {
+    width: 32px;
+    text-align: center;
+    font-weight: bold;
+  }
+  
+
+  .demo2-table {
+    position:absolute;
+    width: 40%;
+    left: 45%;
+    top: 4%;
+  }
+  
+  .mat-column-demo2-bowler {
+    // width: 32px;
+    border-right: 10px solid black;
+    padding-right: 24px;
+    text-align: center;
+  }
+  
+  .mat-column-demo2-balls_bowled {
+    padding-left: 16px;
+    font-size: 20px;
+  }
+  
+  .mat-column-demo2-runs_given {
+    font-style: italic;
+  }
+  
+  .mat-column-demo2-wickets {
+    width: 32px;
+    text-align: center;
+    font-weight: bold;
+  }
+  

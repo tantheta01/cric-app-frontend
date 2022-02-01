@@ -1,7 +1,27 @@
 <!-- <div *ngIf={{should_show}}> -->
-<ul class='matches_displayed'>
-    <li *ngFor="let match of matches_displayed">
-        {{match.rn}} {{match.season_year}}
+<!-- <ul class='matches'>
+    <li *ngFor="let match of matches">
+        {{match["rn"]}} {{match["season_year"]}}
     </li>
-</ul>
+</ul> -->
+
+<mat-list>
+    <mat-list-item *ngFor = "let match of matches"> 
+        <!-- <mat-icon matListIcon>folder</mat-icon> -->
+        <mat-card>
+        <h1 matLine> Match ID : {{match["rn"]}} </h1>
+        <p matLine> 
+             {{match["team1"]}} VS {{match["team2"]}}
+        </p>
+        <p matLine>
+            Venue = {{match["venue_id"]}}
+        </p>
+        <p matLine> 
+            Winner = {{match["match_winner"]}}
+        </p>
+    </mat-card>
+    </mat-list-item>
+</mat-list>
+
+
 <!-- </div> -->
