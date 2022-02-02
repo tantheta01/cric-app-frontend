@@ -18,6 +18,7 @@ import { PlayerComponent } from './components/player/player.component';
 import { VenueComponent } from './components/venue/venue.component';
 import { PointsComponent } from './components/points/points.component';
 import { MatchdetailComponent } from './components/matchdetail/matchdetail.component';
+import { MatchsummaryComponent } from './components/matchsummary/matchsummary.component';
 
 @NgModule({
   declarations: [
@@ -27,6 +28,7 @@ import { MatchdetailComponent } from './components/matchdetail/matchdetail.compo
     VenueComponent,
     PointsComponent,
     MatchdetailComponent,
+    MatchsummaryComponent,
   ],
   imports: [
     AppRoutingModule,

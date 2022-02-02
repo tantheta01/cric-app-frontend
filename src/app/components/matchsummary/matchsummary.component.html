@@ -1,0 +1,57 @@
+<table mat-table [dataSource] = "first_innings_bat" class="mat-elevation-z8 demo-table">
+    <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef> Batsman Name </th>
+        <td mat-cell *matCellDef="let element"> <a href="www.google.com"> {{element["player_name"]}}</a> </td>
+      </ng-container>
+    
+      <!-- Name Column -->
+      <ng-container matColumnDef="runs">
+        <th mat-header-cell *matHeaderCellDef> Runs </th>
+        <td mat-cell *matCellDef="let element"> {{element["runs"]}} </td>
+      </ng-container>
+    
+      <!-- Weight Column -->
+      <!-- <ng-container matColumnDef="fours">
+        <th mat-header-cell *matHeaderCellDef> Fours </th>
+        <td mat-cell *matCellDef="let element"> {{element["nfours"]}} </td>
+      </ng-container> -->
+    
+      <!-- Symbol Column -->
+      <ng-container matColumnDef="balls">
+        <th mat-header-cell *matHeaderCellDef> Balls </th>
+        <td mat-cell *matCellDef="let element"> {{element["num_balls"]}} </td>
+      </ng-container>
+    
+      <tr mat-header-row *matHeaderRowDef="batting_columns"></tr>
+      <tr mat-row *matRowDef="let row; columns: batting_columns;"></tr>
+    
+</table>
+
+<table mat-table [dataSource] = "first_innings_bowl" class="mat-elevation-z8 demo2-table">
+    <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef> Bowler Name </th>
+        <td mat-cell *matCellDef="let element"> <a href="www.google.com"> {{element["player_name"]}}</a> </td>
+      </ng-container>
+    
+      <!-- Name Column -->
+      <ng-container matColumnDef="wickets">
+        <th mat-header-cell *matHeaderCellDef> Wickets </th>
+        <td mat-cell *matCellDef="let element"> {{element["nwickets"]}} </td>
+      </ng-container>
+    
+      <!-- Weight Column -->
+      <!-- <ng-container matColumnDef="fours">
+        <th mat-header-cell *matHeaderCellDef> Fours </th>
+        <td mat-cell *matCellDef="let element"> {{element["nfours"]}} </td>
+      </ng-container> -->
+    
+      <!-- Symbol Column -->
+      <ng-container matColumnDef="runs">
+        <th mat-header-cell *matHeaderCellDef> Runs Given </th>
+        <td mat-cell *matCellDef="let element"> {{element["tot_runs"]}} </td>
+      </ng-container>
+    
+      <tr mat-header-row *matHeaderRowDef="bowling_columns"></tr>
+      <tr mat-row *matRowDef="let row; columns: bowling_columns;"></tr>
+    
+</table>
