@@ -1,7 +1,7 @@
 <table mat-table [dataSource] = "second_innings_bat" class="mat-elevation-z8 demo-table">
     <ng-container matColumnDef="batter">
         <th mat-header-cell *matHeaderCellDef> Batter </th>
-        <td mat-cell *matCellDef="let element"> <a href="www.google.com"> {{element["batter"]}}</a> </td>
+        <td mat-cell *matCellDef="let element"> <a href="www.google.com"> {{element["player_name"]}}</a> </td>
       </ng-container>
     
       <!-- Name Column -->
@@ -13,13 +13,13 @@
       <!-- Weight Column -->
       <ng-container matColumnDef="fours">
         <th mat-header-cell *matHeaderCellDef> Fours </th>
-        <td mat-cell *matCellDef="let element"> {{element["fours"]}} </td>
+        <td mat-cell *matCellDef="let element"> {{element["nfours"]}} </td>
       </ng-container>
     
       <!-- Symbol Column -->
       <ng-container matColumnDef="sixes">
         <th mat-header-cell *matHeaderCellDef> Sixes </th>
-        <td mat-cell *matCellDef="let element"> {{element["sixes"]}} </td>
+        <td mat-cell *matCellDef="let element"> {{element["nsixes"]}} </td>
       </ng-container>
     
       <tr mat-header-row *matHeaderRowDef="displayedColumn"></tr>
@@ -30,25 +30,37 @@
 <table mat-table [dataSource] = "second_innings_bowl" class="mat-elevation-z8 demo2-table">
     <ng-container matColumnDef="bowler">
         <th mat-header-cell *matHeaderCellDef> Bowler </th>
-        <td mat-cell *matCellDef="let element"> <a href="www.google.com"> {{element["bowler"]}}</a> </td>
+        <td mat-cell *matCellDef="let element"> <a href="www.google.com"> {{element["player_name"]}}</a> </td>
       </ng-container>
     
       <ng-container matColumnDef="balls_bowled">
         <th mat-header-cell *matHeaderCellDef> Balls Bowled </th>
-        <td mat-cell *matCellDef="let element"> {{element["balls_bowled"]}} </td>
+        <td mat-cell *matCellDef="let element"> {{element["nballs"]}} </td>
       </ng-container>
     
       <ng-container matColumnDef="runs_given">
         <th mat-header-cell *matHeaderCellDef> Runs Given </th>
-        <td mat-cell *matCellDef="let element"> {{element["runs_given"]}} </td>
+        <td mat-cell *matCellDef="let element"> {{element["total_runs"]}} </td>
       </ng-container>
     
       <ng-container matColumnDef="wickets">
         <th mat-header-cell *matHeaderCellDef> Wickets </th>
-        <td mat-cell *matCellDef="let element"> {{element["wickets"]}} </td>
+        <td mat-cell *matCellDef="let element"> {{element["nwickets"]}} </td>
       </ng-container>
     
       <tr mat-header-row *matHeaderRowDef="displayedColumn2"></tr>
       <tr mat-row *matRowDef="let row; columns: displayedColumn2;"></tr>
     
 </table>
+
+<!-- <div class="chart-wrapper">
+    <canvas baseChart 
+        [datasets]="LineChartData" 
+        [labels]="Labels" 
+        [options]="lineChartOptions"
+        [colors]="lineChartColors" 
+        [legend]="lineChartLegend" 
+        [chartType]="lineChartType" 
+        [plugins]="lineChartPlugins">
+    </canvas>
+</div> -->

@@ -27,7 +27,7 @@ export class CricketService {
   }
 
   fetch_match(id:number) : Observable<any>{
-    return this.httpClient.get(`http://localhoste:3000/:${id}`, {});
+    return this.httpClient.get(`http://localhost:3000/matches/${id}`);
   }
 
   

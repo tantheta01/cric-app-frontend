@@ -6,22 +6,37 @@
 </ul> -->
 
 <mat-list>
-    <mat-list-item *ngFor = "let match of matches"> 
+    <mat-list-item class="myclass" *ngFor = "let match of matches"> 
         <!-- <mat-icon matListIcon>folder</mat-icon> -->
-        <mat-card>
-        <h1 matLine> Match ID : {{match["rn"]}} </h1>
+        <a [routerLink] = "['/matches', match['match_id']]">
+        <h1 matLine> Match : {{match["t1_name"]}} vs {{match["t2name"]}} </h1>
+        <!-- <br> -->
         <p matLine> 
-             {{match["team1"]}} VS {{match["team2"]}}
+             Venue : {{match["vname"]}}
         </p>
+        <!-- <br> -->
         <p matLine>
-            Venue = {{match["venue_id"]}}
+            {{match["winner_name"]}} won the match
         </p>
-        <p matLine> 
+        <!-- <p matLine> 
             Winner = {{match["match_winner"]}}
-        </p>
-    </mat-card>
+        </p> -->
+    </a>
     </mat-list-item>
+    <!-- <br>
+    <br> -->
+
 </mat-list>
+
+<mat-paginator (page)="handlePageEvent($event)"
+[pageSizeOptions]="pageSizeOptions"
+[pageSize]="pageSize"
+class="sticky left-0"
+[length]="length"
+[pageIndex]="pageIndex"
+aria-label="Select page"
+></mat-paginator>
+
 
 
 <!-- </div> -->

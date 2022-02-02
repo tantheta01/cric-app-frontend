@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+// import { ChartsModule } from 'ng2-charts';
 
 import {MaterialExampleModule} from './material.module';
 // import {ListOverviewExample} from './list-overview-example';
@@ -25,7 +26,7 @@ import { MatchdetailComponent } from './components/matchdetail/matchdetail.compo
     PlayerComponent,
     VenueComponent,
     PointsComponent,
-    MatchdetailComponent
+    MatchdetailComponent,
   ],
   imports: [
     AppRoutingModule,
@@ -36,7 +37,7 @@ import { MatchdetailComponent } from './components/matchdetail/matchdetail.compo
     MatNativeDateModule,
     MaterialExampleModule,
     ReactiveFormsModule,
-
+    
   ],
   providers: [],
   bootstrap: [AppComponent]
