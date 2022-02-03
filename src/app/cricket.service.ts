@@ -33,5 +33,8 @@ export class CricketService {
     return this.httpClient.get(`http://localhost:3000/matches/${id}/summary`);
 
   }
+  fetch_player(id:number) : Observable<any> {
+    return this.httpClient.get(`http://localhost/player/:${id}`);
+  }
   
 }
