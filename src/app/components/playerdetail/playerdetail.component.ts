@@ -37,8 +37,17 @@ export class PlayerdetailComponent implements OnInit {
   hs = 0;
   strike_rate = 0;
   average = 0;
+  matches_bowled = 0;
+  runs_conceded = 0;
+  balls = 0;
+  overs = 0;
+  wickets = 0;
+  economy = 0;
+  five_wickets = 0;
 
   score_graph = [];
+  conceted_runs_graph = [];
+  wickets_graph = [];
 
   // batting chart
   public yearLabels : Label[] = [];
@@ -47,7 +56,10 @@ export class PlayerdetailComponent implements OnInit {
   public barchartLegend = true;
 
   public barchartData : ChartDataSets[] = [];
-  public barchartOptions : any;
+  
+  public bowlingYearLabels : Label[] = [];
+  public runs_conceded_per_match = [];
+  public bowling_data : ChartDataSets[] = [];
   
 
 
@@ -64,21 +76,16 @@ export class PlayerdetailComponent implements OnInit {
         this.batting_style = answer['details'][0]['batting_hand'];
         this.bowling_skill = answer['details'][0]['bowling_skill'];
         this.nmatches = Number(answer['total_matches'][0]['count']);
-        this.runs = Number(answer["runs_scored"][0]['sum']);
+        this.runs = Number(answer["runs_scored"][0]['coalesce']);
         this.fours = Number(answer['four_runs'][0]['runs_fours']);
         this.sixes = Number(answer['six_runs'][0]['runs_fours']);
         this.fifty = Number(answer['fifties'][0]['count']);
-        this.hs = Number(answer['highest_score'][0]['max'])
+        this.hs = Number(answer['highest_score'][0]['coalesce'])
         this.strike_rate = Number(answer['strike_rate'][0]['strike_rate']);
         this.average = Number(answer['average'][0]['average']);
-        console.log(answer["runs_scored"][0]['sum'])
-        console.log(this.country);
-        console.log(this.batting_style);
-        console.log(this.bowling_skill);
         let l = [];
         let r : any[] = [];
         let s : any[] = [];
-        // let text_written = [];
         this.score_graph = answer['score_graph'];
 
         for(var i=0; i<this.score_graph.length; i++){
@@ -107,36 +114,38 @@ export class PlayerdetailComponent implements OnInit {
             s.push(this.chartColors.orange);
             continue;
           }
-          // s.push(this.chartColors.or33);
         }
         this.yearLabels = r;
         this.barchartData = [{data : l, label : 'runs per match', backgroundColor : s}];
-        // this.barchartOptions = {
-        //   scaleShowVerticalLines: false,
-        //   responsive: true,
-        //   scaleShowValues: true,
-        //   scaleValuePaddingX: 10,
-        //   scaleValuePaddingY: 10,
-        //   animation: {
-        //             onComplete: function () {
-        //                 // var chartInstance = this.chart,
-        //                 // ctx = chartInstance.ctx;
-        //                 // ctx.textAlign = 'center';
-        //                 ctx.textBaseline = 'bottom';
-        //                 this.data.datasets.forEach(function (dataset, i) {
-        //                     var meta = chartInstance.controller.getDatasetMeta(i);
-        //                     meta.data.forEach(function (bar, index) {
-        //                         var data = dataset.data[index];
-        //                         ctx.fillText(data, bar._model.x, bar._model.y - 5);
-        //                     });
-        //                 });
-        //             }
-        //         }
-        //   };
 
-        
+        let lb = [];
+        let rb : any[] = [];
+        let sb = [];
+        this.conceted_runs_graph = answer['conceded_graph'];
+        this.wickets_graph = answer['wickets_graph'];
 
-        // this.runs_match_wise = 
+        for(var i=0;i < this.conceted_runs_graph.length; i++){
+          lb.push(Number(this.conceted_runs_graph[i]['runs_conceded']));
+          if(i == 0 || this.conceted_runs_graph[i]['season_year'] != this.conceted_runs_graph[i-1]['season_year']){
+            let num = new Number(this.conceted_runs_graph[i]['season_year']);
+            rb.push(num.toString());
+
+          }
+          else{
+            rb.push('');
+          }
+
+        }
+
+        for(var i=0;i<this.wickets_graph.length; i++){
+          sb.push(Number(this.wickets_graph[i]['numwkts']));
+          
+        }
+        this.bowlingYearLabels = rb;
+        this.bowling_data = [{data : lb, label : 'conceted_runs'}];
+        console.log("ye toh hogya");
+        console.log(this.bowlingYearLabels);
+        console.log(lb);
 
       }
     })
