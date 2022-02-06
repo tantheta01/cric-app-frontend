@@ -43,7 +43,8 @@ import { PlayerdetailComponent } from './components/playerdetail/playerdetail.co
     MatNativeDateModule,
     MaterialExampleModule,
     ReactiveFormsModule,
-    ChartsModule
+    ChartsModule,
+    
   ],
   providers: [],
   bootstrap: [AppComponent]

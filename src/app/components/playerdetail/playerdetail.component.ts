@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { Chart, ChartOptions, ChartType, ChartDataSets } from 'chart.js';
+import { Chart, ChartType, ChartDataSets, ChartOptions } from 'chart.js';
 import { ActivatedRoute } from '@angular/router'
 import { CricketService } from '../../cricket.service';
 import { Label, Color, ChartsModule } from 'ng2-charts';
-// import { stringify } from 'querystring';
+
+
 
 @Component({
   selector: 'app-playerdetail',
@@ -12,7 +13,7 @@ import { Label, Color, ChartsModule } from 'ng2-charts';
 })
 export class PlayerdetailComponent implements OnInit {
 
-  // chart details
+
 
   public chartColors = {
     red: 'rgb(255, 99, 132)',
@@ -52,7 +53,7 @@ export class PlayerdetailComponent implements OnInit {
   // batting chart
   public yearLabels : Label[] = [];
   public runs_per_match = [];
-  public chartType : ChartType = 'bar';
+  public chartType : ChartType = 'line';
   public barchartLegend = true;
 
   public barchartData : ChartDataSets[] = [];
@@ -60,12 +61,33 @@ export class PlayerdetailComponent implements OnInit {
   public bowlingYearLabels : Label[] = [];
   public runs_conceded_per_match = [];
   public bowling_data : ChartDataSets[] = [];
-  
+  public bowlerOptions : ChartOptions;
 
 
-  constructor(public route : ActivatedRoute, public cricserv : CricketService) { }
+  constructor(public route : ActivatedRoute, public cricserv : CricketService) { 
+    this.bowlerOptions = {};
+  }
 
   ngOnInit(): void {
+    this.bowlerOptions = {
+      scales : {
+        yAxes  : [{
+          id : 'A',
+          type : 'linear',
+          position : 'left'
+        },
+        {
+          id : 'B',
+          type : 'linear',
+          position : 'right',
+          ticks : {
+            max : 10,
+            min : 0
+          }
+        }
+        ]
+      }
+    }
     this.player_id = Number(this.route.snapshot.paramMap.get('player_id'));
     console.log("the value of player_id is");
     console.log(this.player_id);
@@ -142,7 +164,7 @@ export class PlayerdetailComponent implements OnInit {
           
         }
         this.bowlingYearLabels = rb;
-        this.bowling_data = [{data : lb, label : 'conceted_runs'}];
+        this.bowling_data = [{data : lb, label : 'conceted_runs', type : 'bar', yAxisID: 'A'}, {data : sb, label : 'wickets_taken', type : 'line', yAxisID: 'B'}];
         console.log("ye toh hogya");
         console.log(this.bowlingYearLabels);
         console.log(lb);
