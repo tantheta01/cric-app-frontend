@@ -1,8 +1,40 @@
+.splitscreen {
+  display:flex;
+}
+.splitscreen .left {
+  flex: 5;
+}
+.splitscreen .right {
+  flex: 4;
+}
+
+
+.heading-bat{
+  position: absolute;
+  left: 12%;
+  
+}
+
+.heading-bowl{
+  position: absolute;
+  left: 55%;
+}
+.pos-top{
+  position: relative;
+  top: 4%;
+}
+
+.heading-bat-2{
+  position: absolute;
+  left : 12%;
+}
+.heading-bowl-2{
+  position: absolute;
+  left : 55%;
+}
+
 .demo-table {
-    position:absolute;
-    width: 40%;
-    left: 2%;
-    top: 4%;
+    width: 64%;
   }
   
   .mat-column-demo-name {
@@ -29,10 +61,7 @@
   
 
   .demo2-table {
-    position:absolute;
-    width: 40%;
-    left: 45%;
-    top: 4%;
+    width: 80%;
   }
   
   .mat-column-demo2-name {

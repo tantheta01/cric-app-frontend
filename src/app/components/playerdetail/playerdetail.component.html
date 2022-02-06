@@ -42,8 +42,9 @@
 </mat-card>
 
 <div>
-    <div style="display: block">
-        <canvas baseChart 
+    <div style="width: 100%; overflow-x: auto; overflow-y: hidden">
+    <div style="width: 3000px; height: 300px">
+        <canvas height="300" width="0" baseChart 
     [datasets]="bowling_data"
     [labels]="bowlingYearLabels"
     [legend]="barchartLegend"
@@ -51,6 +52,7 @@
     [options]="bowlerOptions"
     >
   </canvas>
+    </div>
     </div>
 
 </div>
