@@ -1,0 +1,43 @@
+
+	<div>
+		<div style="display: block">
+			<canvas baseChart 
+        [datasets]="barchartData"
+        [labels]="yearLabels"
+        
+        
+        [legend]="barchartLegend"
+        [chartType]="chartType">
+      </canvas>
+		</div>
+
+  </div>
+
+
+<mat-card>
+    <mat-card-title>
+        {{player_name}}
+    </mat-card-title>
+    <mat-card-content>
+    <p>    {{country}}</p>
+    <p>{{batting_style}} batsman</p>
+    <p>{{bowling_skill}} bowler</p>
+    </mat-card-content>
+    
+</mat-card>
+
+<mat-card>
+    <mat-card-content>
+        <p>
+            <b>Innings</b>
+        </p>
+        <p>{{nmatches}}</p>
+        <p><b>Aggregate</b></p>
+        <p>{{runs}}</p>
+        <p><b>Highest Score</b></p>
+        <p>{{hs}}</p>
+        <p><b>Average</b></p>
+        <p>{{average}}</p>
+    </mat-card-content>
+</mat-card>
+

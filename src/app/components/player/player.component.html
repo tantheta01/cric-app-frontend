@@ -1,1 +1,31 @@
-<p>player works!</p>
+<mat-list>
+    <mat-list-item class="myclass" *ngFor = "let player of players"> 
+        <!-- <mat-icon matListIcon>folder</mat-icon> -->
+        <a [routerLink] = "['/players', player['player_id']]">
+        <h1 matLine>{{player["player_name"]}}</h1>
+        <!-- <br> -->
+        <p matLine> 
+             Country : {{player["country_name"]}}
+        </p>
+        <!-- <br> -->
+        <!-- <p matLine>
+            {{match["winner_name"]}} won the match
+        </p> -->
+        <!-- <p matLine> 
+            Winner = {{match["match_winner"]}}
+        </p> -->
+    </a>
+    </mat-list-item>
+    <!-- <br>
+    <br> -->
+
+</mat-list>
+
+<mat-paginator (page)="handleEvent($event)"
+[pageSizeOptions]="pageSizeOptions"
+[pageSize]="pageSize"
+class="sticky left-0"
+[length]="length"
+[pageIndex]="pageIndex"
+aria-label="Select page"
+></mat-paginator>
