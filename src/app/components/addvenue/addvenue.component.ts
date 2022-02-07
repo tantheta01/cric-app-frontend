@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
 import { FormService } from '../../form.service';
 import { venue } from '../../venue';
-
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 @Component({
   selector: 'app-addvenue',
   templateUrl: './addvenue.component.html',
@@ -52,6 +52,7 @@ export class ContactFormComponent implements OnInit {
   }
   
   onSubmit() {
+    console.log("submitting lodu lalit");
     this.showMsg = false;
     if(this.venueForm.valid){
     this.formService

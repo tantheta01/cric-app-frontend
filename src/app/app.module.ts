@@ -25,6 +25,7 @@ import { ToptoolbarComponent } from './components/toptoolbar/toptoolbar.componen
 import { PlayerdetailComponent } from './components/playerdetail/playerdetail.component';
 import { VenuedetailComponent } from './venuedetail/venuedetail.component';
 import { PointslandingComponent } from './components/pointslanding/pointslanding.component';
+import { ContactFormComponent } from './components/addvenue/addvenue.component';
 
 @NgModule({
   declarations: [
@@ -39,6 +40,7 @@ import { PointslandingComponent } from './components/pointslanding/pointslanding
     PlayerdetailComponent,
     VenuedetailComponent,
     PointslandingComponent,
+    ContactFormComponent
   ],
   imports: [
     AppRoutingModule,
