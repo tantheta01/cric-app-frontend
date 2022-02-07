@@ -44,6 +44,12 @@ export class MatchdetailComponent implements OnInit {
   team1_name = '';
   team2_name = '';
   season_year = 0;
+  toss_winner = '';
+  venue_name = '';
+  umpire_name = '';
+
+  team_1_playing_11 : string[] = [];
+  team_2_playing_11 : string[] = [];
 
   first_innings_runs : any[] = [];
   second_innings_runs: any[] = [];
@@ -53,7 +59,7 @@ export class MatchdetailComponent implements OnInit {
   public wicket2_balls : any[] = [];
 
   public overLabels : Label[] = [];
-  public pieChartLabels : Label[] = ['ones', 'twos', 'fours', 'sixes'];
+  public pieChartLabels : Label[] = ['ones', 'twos', 'fours', 'sixes', 'extras'];
   public pieChartType : ChartType = 'pie';
 
   public comparison_chart : ChartType = 'line';
@@ -208,10 +214,22 @@ export class MatchdetailComponent implements OnInit {
             label : 'Team2'
           }
         ]
-
+        this.venue_name = answer['venue']['rows'][0]['venue_name'];
+        this.umpire_name = answer['umpire']['rows'][0]['umpire_name'];
+        this.toss_winner = answer['toss_win']['rows'][0]['team_name'];
+        this.answer_dump = answer['playing_eleven_1']['rows'];
+        for(var i=0;i<this.answer_dump.length;i++){
+          this.team_1_playing_11.push(this.answer_dump[i]['player_name']);
+        }
+        this.answer_dump = answer['playing_eleven_2']['rows'];
+        for(var i=0;i<this.answer_dump.length;i++){
+          this.team_2_playing_11.push(this.answer_dump[i]['player_name']);
+        }
 
       }
     })
+    
+    
     
   }
  
