@@ -12,6 +12,13 @@ import { Label, Color, ChartsModule } from 'ng2-charts';
 })
 export class VenuedetailComponent implements OnInit {
 
+  public pieChartLabels : Label[] = ['Team batting 1st won','Team batting 2nd won'];
+  public pieChartType : ChartType = 'pie';
+  public pieChartData : ChartDataSets[] = [];
+  public yearLabels : Label[] = [];
+  public lineChartType : ChartType = 'line';
+  public averageRuns : ChartDataSets[] = [];
+
   venue_id = 0;
   venue_name = '';
   city = '';
@@ -23,6 +30,7 @@ export class VenuedetailComponent implements OnInit {
   highest_chase = 0;
   team_bat_first = 0;
   team_bat_second = 0;
+  tmp = [];
 
   constructor(public route : ActivatedRoute, public cricserv : CricketService) { }
 
@@ -42,8 +50,31 @@ export class VenuedetailComponent implements OnInit {
         this.highest_chase = Number(answer['highest_chase'][0]['max']);
         this.team_bat_first = Number(answer['first_bat'][0]['count']);
         this.team_bat_second = Number(answer['first_bowl'][0]['count']);
+        this.pieChartData = [
+          {
+            data : [this.team_bat_first,this.team_bat_second],
+            label : 'Outcome of matches held here'
+          }
+        ];
+        let aveg = [];
+
+        this.tmp = answer['average_score'];
+        for(var i = 0; i < this.tmp.length; i++){
+          aveg.push(Number(this.tmp[i]['avg']));
+          this.yearLabels.push(this.tmp[i]['season_year']);
+        }
+        this.averageRuns = [{
+          data : aveg,
+          label : 'average_runs',
+          type : 'line',
+          lineTension : 0,
+        }];
+
       }
     })
+    
+
+
   }
 
 }

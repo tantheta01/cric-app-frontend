@@ -1,23 +1,31 @@
-
+<!-- 
 <mat-list>
     <mat-list-item class="myclass" *ngFor = "let venue of venues"> 
-        <!-- <mat-icon matListIcon>folder</mat-icon> -->
+         <mat-icon matListIcon>folder</mat-icon>
         <a [routerLink] = "['/venues', venue['venue_id']]">
         <h1 matLine>{{venue["venue_name"]}}</h1>
-        <!-- <br> -->
-        <!-- <br> -->
-        <!-- <p matLine>
+        <<br>
+        <br>
+        <p matLine>
             {{match["winner_name"]}} won the match
-        </p> -->
-        <!-- <p matLine> 
+        </p> 
+        <p matLine> 
             Winner = {{match["match_winner"]}}
-        </p> -->
+        </p>
     </a>
     </mat-list-item>
-    <!-- <br>
-    <br> -->
+    <br>
+    <br>
 
-</mat-list>
+</mat-list> -->
+
+<table>
+    <tr *ngFor = "let x of venues">
+        <a [routerLink] = "['/venues', x['venue_id']]">
+      <td>{{ x["venue_name"] }}</td>
+    </a>
+    </tr>
+  </table>
 
 <!--
 <table mat-table [dataSource]="venues">
