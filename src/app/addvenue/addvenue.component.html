@@ -1,0 +1,45 @@
+<div class="login-wrapper" fxLayout="row" fxLayoutAlign="center center">
+    <mat-card class="box">
+      <mat-card-header>
+        <mat-card-title>Add A venue</mat-card-title>
+      </mat-card-header>
+  
+      <!-- <p style="font-size: small; text-align: center;">Update your details</p> -->
+      <!-- <form class="example-form"> -->
+      <form class="example-form" action="action_page.php" method="post" [formGroup]="add_venue">
+        <mat-card-content>
+          <!-- <mat-form-field class="example-full-width">
+            <input matInput placeholder="Name" formControlName="name">
+          </mat-form-field>
+  
+          <mat-form-field class="example-full-width">
+            <input matInput placeholder="Email" formControlName="email">
+          </mat-form-field>
+        
+          <mat-form-field class="example-full-width">
+            <input matInput placeholder="Username" formControlName="username">
+          </mat-form-field> -->
+  
+          <mat-form-field class="example-full-width">
+            <input matInput placeholder="Venue Name" formControlName="venue_name">
+          </mat-form-field>
+
+          <mat-form-field class="example-full-width">
+            <input matInput placeholder="City Name" formControlName="city_name">
+          </mat-form-field>
+
+          <mat-form-field class="example-full-width">
+            <input matInput placeholder="Country Name" formControlName="country_name">
+          </mat-form-field>
+
+          <mat-form-field class="example-full-width">
+            <input matInput placeholder="Capacity" formControlName="capacity">
+          </mat-form-field>
+
+          
+  
+        </mat-card-content>
+        <button mat-stroked-button color="accent" class="btn-block" (click)="onSubmit()">ADD</button>
+      </form>
+    </mat-card>
+  </div>

@@ -9,7 +9,7 @@ import { VenueComponent } from './components/venue/venue.component';
 import { VenuedetailComponent } from './venuedetail/venuedetail.component';
 import { PointsComponent } from './components/points/points.component';
 import { PointslandingComponent } from './components/pointslanding/pointslanding.component';
-import { ContactFormComponent } from './components/addvenue/addvenue.component';
+import { AddvenueComponent } from './addvenue/addvenue.component';
 
 const routes: Routes = [
   {path : '', pathMatch : 'full', redirectTo : 'players'},
@@ -17,11 +17,12 @@ const routes: Routes = [
   {path : 'players/:player_id', component : PlayerdetailComponent},
   {path : 'matches', component : MatchComponent},
   {path : 'players', component : PlayerComponent},
-  {path : 'venues/add', component : ContactFormComponent},
+  {path : 'venues/add', component : AddvenueComponent},
   {path : 'venues/:venue_id', component : VenuedetailComponent},
   {path : 'venues', component : VenueComponent},
   {path : 'pointstable/:season_year', component : PointsComponent},
   {path : 'pointstable', component : PointslandingComponent},
+  
 ];
 
 @NgModule({

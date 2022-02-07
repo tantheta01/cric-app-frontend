@@ -54,5 +54,8 @@ export class CricketService {
   fetch_years() : Observable<any> {
     return this.httpClient.get('http://localhost:3000/pointstable');
   }
+  addVenue(venue_name:any, city_name:any,country_name:any,capacity:any) : Observable<any>{
+    return this.httpClient.post(`http://localhost:3000/addvenue/?venue_name=${venue_name.toString()}&city_name=${city_name.toString()}&country_name=${country_name.toString()}&capacity=${capacity.toString()}`, { title: 'Angular POST Request Example' });
+  }
   
 }
