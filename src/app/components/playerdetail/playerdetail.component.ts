@@ -22,7 +22,7 @@ export class PlayerdetailComponent implements OnInit {
     orange : 'rgb(100, 100, 4)',
     or33 : 'rgb(4, 100, 100)'
   };
-
+  hide_spin : boolean = false;
   // basic details
   player_id = 0;
   player_name = '';
@@ -189,8 +189,9 @@ export class PlayerdetailComponent implements OnInit {
         console.log("ye toh hogya");
         console.log(this.bowlingYearLabels);
         console.log(lb);
-
+        this.hide_spin=true;
       }
+      // 
     })
   }
 

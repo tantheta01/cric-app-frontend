@@ -1,3 +1,4 @@
+<div *ngIf="players.length>0; else elseBlock">
 <mat-list>
     <mat-list-item class="myclass" *ngFor = "let player of players"> 
         <!-- <mat-icon matListIcon>folder</mat-icon> -->
@@ -29,3 +30,11 @@ class="sticky left-0"
 [pageIndex]="pageIndex"
 aria-label="Select page"
 ></mat-paginator>
+</div>
+<ng-template #elseBlock>
+
+    <div class="center divspin">
+        <mat-spinner></mat-spinner>
+    </div>
+    
+    </ng-template>

@@ -1,31 +1,42 @@
-<mat-list>
-    <mat-list-item class="myclass" *ngFor = "let match of matches"> 
-        <!-- <mat-icon matListIcon>folder</mat-icon> -->
-        <a [routerLink] = "['/matches', match['match_id']]">
-        <h3 matLine> Match : {{match["t1_name"]}} vs {{match["t2name"]}} </h3>
-        <!-- <br> -->
-        <p matLine> 
-             Venue : {{match["vname"]}}
-        </p>
-        <!-- <br> -->
-        <p matLine>
-            {{match["winner_name"]}} won the match
-        </p>
-        <!-- <p matLine> 
-            Winner = {{match["match_winner"]}}
-        </p> -->
-    </a>
-    </mat-list-item>
-    <!-- <br>
-    <br> -->
 
-</mat-list>
+<div *ngIf="matches.length>0; else elseBlock">
+    <mat-list>
+        <mat-list-item class="myclass" *ngFor = "let match of matches"> 
+            <!-- <mat-icon matListIcon>folder</mat-icon> -->
+            <a [routerLink] = "['/matches', match['match_id']]">
+            <h3 matLine> Match : {{match["t1_name"]}} vs {{match["t2name"]}} </h3>
+            <!-- <br> -->
+            <p matLine> 
+                 Venue : {{match["vname"]}}
+            </p>
+            <!-- <br> -->
+            <p matLine>
+                {{match["winner_name"]}} won the match
+            </p>
+            <!-- <p matLine> 
+                Winner = {{match["match_winner"]}}
+            </p> -->
+        </a>
+        </mat-list-item>
+        <!-- <br>
+        <br> -->
+    
+    </mat-list>
+    
+    <mat-paginator (page)="handlePageEvent($event)"
+    [pageSizeOptions]="pageSizeOptions"
+    [pageSize]="pageSize"
+    class="sticky left-0"
+    [length]="length"
+    [pageIndex]="pageIndex"
+    aria-label="Select page"
+    ></mat-paginator>
+    
+</div>
+<ng-template #elseBlock>
 
-<mat-paginator (page)="handlePageEvent($event)"
-[pageSizeOptions]="pageSizeOptions"
-[pageSize]="pageSize"
-class="sticky left-0"
-[length]="length"
-[pageIndex]="pageIndex"
-aria-label="Select page"
-></mat-paginator>
+<div class="center divspin">
+    <mat-spinner></mat-spinner>
+</div>
+
+</ng-template>
