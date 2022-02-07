@@ -2,10 +2,10 @@
     <mat-list-item class="myclass" *ngFor = "let player of players"> 
         <!-- <mat-icon matListIcon>folder</mat-icon> -->
         <a [routerLink] = "['/players', player['player_id']]">
-        <h1 matLine>{{player["player_name"]}}</h1>
+        <h3 matLine>{{player["player_name"]}}</h3>
         <!-- <br> -->
         <p matLine> 
-             Country : {{player["country_name"]}}
+             {{player["country_name"]}}
         </p>
         <!-- <br> -->
         <!-- <p matLine>

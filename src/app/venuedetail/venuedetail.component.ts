@@ -12,7 +12,7 @@ import { Label, Color, ChartsModule } from 'ng2-charts';
 })
 export class VenuedetailComponent implements OnInit {
 
-  public pieChartLabels : Label[] = ['Team batting 1st won','Team batting 2nd won'];
+  public pieChartLabels : Label[] = ['Team batting 1st won','Team batting 2nd won','Draw'];
   public pieChartType : ChartType = 'pie';
   public pieChartData : ChartDataSets[] = [];
   public yearLabels : Label[] = [];
@@ -52,7 +52,7 @@ export class VenuedetailComponent implements OnInit {
         this.team_bat_second = Number(answer['first_bowl'][0]['count']);
         this.pieChartData = [
           {
-            data : [this.team_bat_first,this.team_bat_second],
+            data : [this.team_bat_first,this.team_bat_second,0],
             label : 'Outcome of matches held here'
           }
         ];

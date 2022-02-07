@@ -46,7 +46,9 @@ export class MatchdetailComponent implements OnInit {
   season_year = 0;
   toss_winner = '';
   venue_name = '';
-  umpire_name = '';
+  umpire_name1 = '';
+  umpire_name2 = '';
+  umpire_name3 = '';
 
   team_1_playing_11 : string[] = [];
   team_2_playing_11 : string[] = [];
@@ -215,7 +217,9 @@ export class MatchdetailComponent implements OnInit {
           }
         ]
         this.venue_name = answer['venue']['rows'][0]['venue_name'];
-        this.umpire_name = answer['umpire']['rows'][0]['umpire_name'];
+        this.umpire_name1 = answer['umpire']['rows'][0]['umpire_name'];
+        this.umpire_name2 = answer['umpire']['rows'][1]['umpire_name'];
+        this.umpire_name3 = answer['umpire']['rows'][2]['umpire_name'];
         this.toss_winner = answer['toss_win']['rows'][0]['team_name'];
         this.answer_dump = answer['playing_eleven_1']['rows'];
         for(var i=0;i<this.answer_dump.length;i++){
@@ -225,7 +229,8 @@ export class MatchdetailComponent implements OnInit {
         for(var i=0;i<this.answer_dump.length;i++){
           this.team_2_playing_11.push(this.answer_dump[i]['player_name']);
         }
-
+        console.log(this.team_1_playing_11);
+        console.log(this.team_2_playing_11);
       }
     })
     
