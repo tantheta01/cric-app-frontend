@@ -54,6 +54,7 @@ export class PlayerdetailComponent implements OnInit {
   public yearLabels : Label[] = [];
   public runs_per_match = [];
   public chartType : ChartType = 'line';
+  public chartType2 : ChartType = 'bar';
   public barchartLegend = true;
 
   public barchartData : ChartDataSets[] = [];
@@ -74,7 +75,11 @@ export class PlayerdetailComponent implements OnInit {
         yAxes  : [{
           id : 'A',
           type : 'linear',
-          position : 'left'
+          position : 'left',
+          ticks : {
+            // max : 10,
+            min : 0
+          }
         },
         {
           id : 'B',
@@ -164,7 +169,9 @@ export class PlayerdetailComponent implements OnInit {
           
         }
         this.bowlingYearLabels = rb;
-        this.bowling_data = [{data : lb, label : 'conceted_runs', type : 'bar', yAxisID: 'A'}, {data : sb, label : 'wickets_taken', type : 'line', yAxisID: 'B'}];
+        this.bowling_data = [{data : sb, label : 'wickets_taken', type : 'line', yAxisID: 'B'}, {data : lb, label : 'conceted_runs', type : 'bar', yAxisID: 'A'}];
+        console.log(lb);
+        console.log(sb);
         console.log("ye toh hogya");
         console.log(this.bowlingYearLabels);
         console.log(lb);
