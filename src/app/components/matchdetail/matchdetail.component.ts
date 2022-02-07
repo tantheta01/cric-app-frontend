@@ -116,7 +116,9 @@ export class MatchdetailComponent implements OnInit {
         this.first_innings_top_bowl = answer['bowler1']['rows'];
         this.second_innings_top_bat = answer['batsmen2']['rows'];
         this.second_innings_top_bowl = answer['bowler2']['rows'];
-        
+        console.log("lodu lalit");
+        console.log(this.first_innings_top_bowl);
+        console.log(answer['bowler1']['rows']);
       }
     })
     

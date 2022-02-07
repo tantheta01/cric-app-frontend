@@ -1,11 +1,12 @@
 <div class="splitscreen">
   <div class="left">
+      <div *ngIf="first_innings_bat.length &gt; 0">
       <h2>First Innings Bat</h2>>
       <!-- FF1 -->
       <table mat-table [dataSource] = "first_innings_bat" class="mat-elevation-z8 demo-table">
         <ng-container matColumnDef="batter">
             <th mat-header-cell *matHeaderCellDef> Batter </th>
-            <td mat-cell *matCellDef="let element"> <a href="www.google.com"> {{element["player_name"]}}</a> </td>
+            <td mat-cell *matCellDef="let element"> <a [routerLink]="['/players',element['player_id']]"> {{element["player_name"]}}</a> </td>
           </ng-container>
         
           <ng-container matColumnDef="runs">
@@ -27,12 +28,14 @@
           <tr mat-row *matRowDef="let row; columns: displayedColumn;"></tr>
         
     </table>
+  </div>
     <br>
+    <div *ngIf="second_innings_bat.length &gt; 0">
     <h2>Second Innings Bat</h2>
     <table mat-table [dataSource] = "second_innings_bat" class="mat-elevation-z8 demo-table">
       <ng-container matColumnDef="batter">
           <th mat-header-cell *matHeaderCellDef> Batter </th>
-          <td mat-cell *matCellDef="let element"> <a href="www.google.com"> {{element["player_name"]}}</a> </td>
+          <td mat-cell *matCellDef="let element"> <a [routerLink]="['/players',element['player_id']]"> {{element["player_name"]}}</a> </td>
         </ng-container>
       
         
@@ -57,15 +60,16 @@
         <tr mat-row *matRowDef="let row; columns: displayedColumn;"></tr>
       
   </table>
-    
+  </div> 
   </div>
 
   <div class="right">
+    <div *ngIf="first_innings_bowl.length &gt; 0">
       <h2> First Innings Bowl</h2>
       <table mat-table [dataSource] = "first_innings_bowl" class="mat-elevation-z8 demo2-table">
         <ng-container matColumnDef="bowler">
             <th mat-header-cell *matHeaderCellDef> Bowler </th>
-            <td mat-cell *matCellDef="let element"> <a href="www.google.com"> {{element["player_name"]}}</a> </td>
+            <td mat-cell *matCellDef="let element"> <a [routerLink]="['/players',element['player_id']]"> {{element["player_name"]}}</a> </td>
           </ng-container>
         
           <ng-container matColumnDef="balls_bowled">
@@ -87,12 +91,14 @@
           <tr mat-row *matRowDef="let row; columns: displayedColumn2;"></tr>
         
     </table> 
+  </div>
     <br>
+    <div *ngIf="second_innings_bowl.length &gt; 0">
     <h2>Second Innings Bowl</h2>
     <table mat-table [dataSource] = "second_innings_bowl" class="mat-elevation-z8 demo2-table">
       <ng-container matColumnDef="bowler">
           <th mat-header-cell *matHeaderCellDef> Bowler </th>
-          <td mat-cell *matCellDef="let element"> <a href="www.google.com"> {{element["player_name"]}}</a> </td>
+          <td mat-cell *matCellDef="let element"> <a [routerLink]="['/players',element['player_id']]"> {{element["player_name"]}}</a> </td>
         </ng-container>
       
         <ng-container matColumnDef="balls_bowled">
@@ -114,7 +120,7 @@
         <tr mat-row *matRowDef="let row; columns: displayedColumn2;"></tr>
       
   </table>
-  
+</div>
       <!-- FF2 -->
   </div>
 </div>
@@ -135,11 +141,12 @@
 
 <div class="splitscreen">
   <div class="left">
+      <div *ngIf="first_innings_top_bat.length &gt; 0">
       <h2>First Innings Top Batsmen</h2>>
       <table mat-table [dataSource] = "first_innings_top_bat" class="mat-elevation-z8 demo-table">
         <ng-container matColumnDef="batter">
             <th mat-header-cell *matHeaderCellDef> Batter </th>
-            <td mat-cell *matCellDef="let element"> <a href="www.google.com"> {{element["player_name"]}}</a> </td>
+            <td mat-cell *matCellDef="let element"> <a [routerLink]="['/players',element['player_id']]"> {{element["player_name"]}}</a> </td>
           </ng-container>
         
           <ng-container matColumnDef="runs">
@@ -153,12 +160,14 @@
           <tr mat-row *matRowDef="let row; columns: displayColumn3;"></tr>
         
     </table>
+  </div>
     <br>
+    <div *ngIf="second_innings_top_bat.length &gt; 0">
     <h2>Second Innings Top Batsmen</h2>
     <table mat-table [dataSource] = "second_innings_top_bat" class="mat-elevation-z8 demo-table">
       <ng-container matColumnDef="batter">
           <th mat-header-cell *matHeaderCellDef> Batter </th>
-          <td mat-cell *matCellDef="let element"> <a href="www.google.com"> {{element["player_name"]}}</a> </td>
+          <td mat-cell *matCellDef="let element"> <a [routerLink]="['/players',element['player_id']]"> {{element["player_name"]}}</a> </td>
         </ng-container>
       
         
@@ -174,19 +183,20 @@
         <tr mat-row *matRowDef="let row; columns: displayColumn3;"></tr>
       
   </table>
-    
+</div>
   </div>
 
-  <!-- <div class="right">
+  <div class="right">
+    <div *ngIf="first_innings_top_bowl.length &gt; 0">
       <h2> First Innings Top Bowler</h2>
       <table mat-table [dataSource] = "first_innings_top_bowl" class="mat-elevation-z8 demo2-table">
         <ng-container matColumnDef="bowler">
             <th mat-header-cell *matHeaderCellDef> Bowler </th>
-            <td mat-cell *matCellDef="let element"> <a href="www.google.com"> {{element["player_name"]}}</a> </td>
+            <td mat-cell *matCellDef="let element"> <a [routerLink]="['/players',element['player_id']]"> {{element["player_name"]}}</a> </td>
           </ng-container>
         
           
-          <ng-container matColumnDef="wickets">
+          <ng-container matColumnDef="wickets taken">
             <th mat-header-cell *matHeaderCellDef> Wickets </th>
             <td mat-cell *matCellDef="let element"> {{element["nwickets"]}} </td>
           </ng-container>
@@ -195,16 +205,18 @@
           <tr mat-row *matRowDef="let row; columns: displayColumn4;"></tr>
         
     </table> 
+  </div>
     <br>
+    <div *ngIf="second_innings_top_bowl.length &gt; 0">
     <h2> Second Innings Top Bowler</h2>
       <table mat-table [dataSource] = "second_innings_top_bowl" class="mat-elevation-z8 demo2-table">
         <ng-container matColumnDef="bowler">
             <th mat-header-cell *matHeaderCellDef> Bowler </th>
-            <td mat-cell *matCellDef="let element"> <a href="www.google.com"> {{element["player_name"]}}</a> </td>
+            <td mat-cell *matCellDef="let element"> <a [routerLink]="['/players',element['player_id']]"> {{element["player_name"]}}</a> </td>
           </ng-container>
         
           
-          <ng-container matColumnDef="wickets">
+          <ng-container matColumnDef="wickets taken">
             <th mat-header-cell *matHeaderCellDef> Wickets </th>
             <td mat-cell *matCellDef="let element"> {{element["nwickets"]}} </td>
           </ng-container>
@@ -213,8 +225,8 @@
           <tr mat-row *matRowDef="let row; columns: displayColumn4;"></tr>
         
     </table> 
-  
-  </div> -->
+  </div>
+  </div>
 </div>
 
 
