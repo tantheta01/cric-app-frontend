@@ -36,7 +36,9 @@ export class PlayerComponent implements OnInit {
   }
 
   handleEvent(pe : PageEvent) {
-    this.cricserv.fetch_players(this.pageIndex*this.pageSize, (this.pageIndex+1) * this.pageSize).subscribe({
+    this.pageIndex = pe.pageIndex;
+    this.pageSize = pe.pageSize
+    this.cricserv.fetch_players(pe.pageIndex*pe.pageSize, (pe.pageIndex+1) * pe.pageSize).subscribe({
       next : answer =>{
         this.players = answer["rows"];
       }

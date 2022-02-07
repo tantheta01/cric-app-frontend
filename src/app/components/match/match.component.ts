@@ -30,10 +30,10 @@ export class MatchComponent implements OnInit {
 	}
 
 	ngOnInit(): void {
-		this.pageIndex = 1;
+		this.pageIndex = 0;
 		this.pageSize = 10;
 		this.length=100;
-		this.cricserv.fetch_matches((this.pageIndex-1)*this.pageSize, this.pageIndex*this.pageSize).subscribe({
+		this.cricserv.fetch_matches((this.pageIndex)*this.pageSize, (this.pageIndex+1)*this.pageSize).subscribe({
 			next : answer => {
 				this.matches = answer["rows"];
 				console.log("hey");
@@ -45,7 +45,9 @@ export class MatchComponent implements OnInit {
 
 	}
 	handlePageEvent(pe : PageEvent){
-		this.cricserv.fetch_matches((pe.pageIndex-1)*pe.pageSize, pe.pageIndex*pe.pageSize).subscribe({
+		this.pageIndex = pe.pageIndex;
+		this.pageSize = pe.pageSize
+		this.cricserv.fetch_matches((pe.pageIndex)*pe.pageSize, pe.pageIndex*pe.pageSize+pe.pageSize).subscribe({
 			next : answer => {
 				this.matches = answer["rows"];
 				console.log("hey");
