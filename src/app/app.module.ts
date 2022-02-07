@@ -2,6 +2,8 @@ import { NgModule } from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { ChartsModule } from 'ng2-charts';
+import {MatTableModule} from '@angular/material/table';
+
 
 import {MaterialExampleModule} from './material.module';
 // import {ListOverviewExample} from './list-overview-example';
@@ -21,6 +23,7 @@ import { MatchdetailComponent } from './components/matchdetail/matchdetail.compo
 import { MatchsummaryComponent } from './components/matchsummary/matchsummary.component';
 import { ToptoolbarComponent } from './components/toptoolbar/toptoolbar.component';
 import { PlayerdetailComponent } from './components/playerdetail/playerdetail.component';
+import { VenuedetailComponent } from './venuedetail/venuedetail.component';
 
 @NgModule({
   declarations: [
@@ -33,6 +36,7 @@ import { PlayerdetailComponent } from './components/playerdetail/playerdetail.co
     MatchsummaryComponent,
     ToptoolbarComponent,
     PlayerdetailComponent,
+    VenuedetailComponent,
   ],
   imports: [
     AppRoutingModule,

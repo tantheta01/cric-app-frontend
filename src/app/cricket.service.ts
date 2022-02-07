@@ -40,5 +40,12 @@ export class CricketService {
     return this.httpClient.get(`http://localhost:3000/players/${id}`);
   }
 
+  fetch_venues(skipp:number, limitt:number) : Observable<any> {
+    return this.httpClient.get(`http://localhost:3000/venues/?skip=${skipp}&limit=${limitt}`);
+  }
+
+  fetch_venue(id:number) : Observable<any> {
+    return this.httpClient.get(`http://localhost:3000/venues/${id}`);
+  }
   
 }
