@@ -1,0 +1,87 @@
+.splitscreen {
+    display:flex;
+  }
+  .splitscreen .left {
+    flex: 5;
+  }
+  .splitscreen .right {
+    flex: 4;
+  }
+  
+  
+  .heading-bat{
+    position: absolute;
+    left: 12%;
+    
+  }
+  
+  .heading-bowl{
+    position: absolute;
+    left: 55%;
+  }
+  .pos-top{
+    position: relative;
+    top: 4%;
+  }
+  
+  .heading-bat-2{
+    position: absolute;
+    left : 12%;
+  }
+  .heading-bowl-2{
+    position: absolute;
+    left : 55%;
+  }
+  
+  .demo-table {
+      width: 64%;
+    }
+    
+    .mat-column-demo-name {
+      // width: 32px;
+      border-right: 10px solid black;
+      padding-right: 24px;
+      text-align: center;
+    }
+    
+    .mat-column-demo-runs {
+      padding-left: 16px;
+      font-size: 20px;
+    }
+    
+    .mat-column-demo-balls {
+      font-style: italic;
+    }
+    
+  //   .mat-column-demo-sixes {
+  //     width: 32px;
+  //     text-align: center;
+  //     font-weight: bold;
+  //   }
+    
+  
+    .demo2-table {
+      width: 80%;
+    }
+    
+    .mat-column-demo2-name {
+      // width: 32px;
+      border-right: 10px solid black;
+      padding-right: 24px;
+      text-align: center;
+    }
+    
+    .mat-column-demo2-wickets {
+      padding-left: 16px;
+      font-size: 20px;
+    }
+    
+    .mat-column-demo2-runs {
+      font-style: italic;
+    }
+    
+  //   .mat-column-demo2-wickets {
+  //     width: 32px;
+  //     text-align: center;
+  //     font-weight: bold;
+  //   }

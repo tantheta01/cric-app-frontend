@@ -110,6 +110,14 @@ export class PlayerdetailComponent implements OnInit {
         this.hs = Number(answer['highest_score'][0]['coalesce'])
         this.strike_rate = Number(answer['strike_rate'][0]['strike_rate']);
         this.average = Number(answer['average'][0]['average']);
+        this.matches_bowled = Number(answer['matches_bowled'][0]['count']);
+        this.runs_conceded = Number(answer['runs_conceded'][0]['runs_conceded']);
+        this.balls = Number(answer['numballs'][0]['num_balls']);
+        this.overs = Number(answer['numovers'][0]['count']);
+        this.wickets = Number(answer['numwkts'][0]['sum']);
+        this.economy = Number(answer['economy'][0]['economy']);
+        this.five_wickets = Number(answer['five_wickets'][0]['count']);
+
         let l = [];
         let r : any[] = [];
         let s : any[] = [];

@@ -27,19 +27,38 @@
 </mat-card>
 
 <mat-card>
-    <mat-card-content>
+    <h4>Batting Statistics</h4>
+    <mat-card-content style = 'margin-left : 10px; margin-top: 10px;'>
         <p>
-            <b>Innings</b>
+            <b>Matches played: </b>{{nmatches}}
         </p>
-        <p>{{nmatches}}</p>
-        <p><b>Aggregate</b></p>
-        <p>{{runs}}</p>
-        <p><b>Highest Score</b></p>
-        <p>{{hs}}</p>
-        <p><b>Average</b></p>
-        <p>{{average}}</p>
+        <p><b>Total runs: </b>{{runs}}</p>
+        <p><b>Runs by 4: </b>{{fours}}</p>
+        <p><b>Runs by 6: </b>{{sixes}}</p>
+        <p><b>Fifties: </b>{{fifty}}</p>
+        <p><b>Highest score: </b>{{hs}}</p>
+        <p><b>Strike rate: </b>{{strike_rate}}</p>
+        <p><b>Average: </b>{{average}}</p>
     </mat-card-content>
+    
 </mat-card>
+
+<mat-card>
+    <h4>Bowling Statistics</h4>
+    <mat-card-content style = 'margin-left : 10px; margin-top: 10px;'>
+        <p>
+            <b>Matches bowled: </b>{{matches_bowled}}
+        </p>
+        <p><b>Runs conceded: </b>{{runs_conceded}}</p>
+        <p><b>Balls bowled: </b>{{balls}}</p>
+        <p><b>Overs bowled: </b>{{overs}}</p>
+        <p><b>Wickets taken: </b>{{wickets}}</p>
+        <p><b>Economy </b>{{economy}}</p>
+        <p><b>Five wickets: </b>{{five_wickets}}</p>
+    </mat-card-content>
+    
+</mat-card>
+
 
 <div>
     <div style="width: 100%; overflow-x: auto; overflow-y: hidden">
