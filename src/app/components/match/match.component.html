@@ -2,7 +2,7 @@
     <mat-list-item class="myclass" *ngFor = "let match of matches"> 
         <!-- <mat-icon matListIcon>folder</mat-icon> -->
         <a [routerLink] = "['/matches', match['match_id']]">
-        <h1 matLine> Match : {{match["t1_name"]}} vs {{match["t2name"]}} </h1>
+        <h3 matLine> Match : {{match["t1_name"]}} vs {{match["t2name"]}} </h3>
         <!-- <br> -->
         <p matLine> 
              Venue : {{match["vname"]}}

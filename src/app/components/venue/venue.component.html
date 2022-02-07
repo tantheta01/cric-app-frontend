@@ -22,7 +22,7 @@
 <table>
     <tr *ngFor = "let x of venues">
         <a [routerLink] = "['/venues', x['venue_id']]">
-      <td>{{ x["venue_name"] }}</td>
+      <td><h4>{{ x["venue_name"] }}</h4></td>
     </a>
     </tr>
   </table>

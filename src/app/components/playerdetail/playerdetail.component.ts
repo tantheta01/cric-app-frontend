@@ -114,10 +114,16 @@ export class PlayerdetailComponent implements OnInit {
         this.runs_conceded = Number(answer['runs_conceded'][0]['runs_conceded']);
         this.balls = Number(answer['numballs'][0]['num_balls']);
         this.overs = Number(answer['numovers'][0]['count']);
-        this.wickets = Number(answer['numwkts'][0]['sum']);
-        this.economy = Number(answer['economy'][0]['economy']);
+        this.wickets = Number(answer['numwkts'][0]['numwkts']);
+        try{
+          this.economy = Number(answer['economy'][0]['economy']);
+        }
+        catch(err){
+          this.economy = 0;
+        }
         this.five_wickets = Number(answer['five_wickets'][0]['count']);
-
+        console.log(this.wickets);
+        console.log(answer['numwkts'][0]);
         let l = [];
         let r : any[] = [];
         let s : any[] = [];
@@ -177,7 +183,7 @@ export class PlayerdetailComponent implements OnInit {
           
         }
         this.bowlingYearLabels = rb;
-        this.bowling_data = [{data : sb, label : 'wickets_taken', type : 'line', yAxisID: 'B'}, {data : lb, label : 'conceted_runs', type : 'bar', yAxisID: 'A'}];
+        this.bowling_data = [{data : sb, label : 'wickets_taken', type : 'line', yAxisID: 'B', lineTension : 0}, {data : lb, label : 'conceted_runs', type : 'bar', yAxisID: 'A'}];
         console.log(lb);
         console.log(sb);
         console.log("ye toh hogya");
