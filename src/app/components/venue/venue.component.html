@@ -19,6 +19,8 @@
 
 </mat-list> -->
 <div *ngIf="venues.length>0; else elseBlock">
+<button mat-button [routerLink] = "['/venues','add']">Add Venue</button>
+
 <table>
     <tr *ngFor = "let x of venues">
         <a [routerLink] = "['/venues', x['venue_id']]">
