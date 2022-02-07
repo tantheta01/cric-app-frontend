@@ -47,5 +47,9 @@ export class CricketService {
   fetch_venue(id:number) : Observable<any> {
     return this.httpClient.get(`http://localhost:3000/venues/${id}`);
   }
+
+  fetch_pointstable(season_year : number) : Observable<any> {
+    return this.httpClient.get(`http://localhost:3000/pointstable/${season_year}`);
+  }
   
 }

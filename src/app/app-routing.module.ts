@@ -7,6 +7,7 @@ import { PlayerComponent } from './components/player/player.component';
 import { PlayerdetailComponent } from './components/playerdetail/playerdetail.component';
 import { VenueComponent } from './components/venue/venue.component';
 import { VenuedetailComponent } from './venuedetail/venuedetail.component';
+import { PointsComponent } from './components/points/points.component';
 
 const routes: Routes = [
   {path : '', pathMatch : 'full', redirectTo : 'players'},
@@ -15,7 +16,8 @@ const routes: Routes = [
   {path : 'matches', component : MatchComponent},
   {path : 'players', component : PlayerComponent},
   {path : 'venues', component : VenueComponent},
-  {path : 'venues/:venue_id', component : VenuedetailComponent}
+  {path : 'venues/:venue_id', component : VenuedetailComponent},
+  {path : 'pointstable/:season_year', component : PointsComponent}
 ];
 
 @NgModule({
