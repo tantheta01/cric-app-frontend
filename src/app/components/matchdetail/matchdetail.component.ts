@@ -37,6 +37,14 @@ export class MatchdetailComponent implements OnInit {
   first_innings_top_bowl = [];
   second_innings_top_bowl = [];
   
+  
+
+  team1_id = 0;
+  team2_id = 0;
+  team1_name = '';
+  team2_name = '';
+  season_year = 0;
+
   first_innings_runs : any[] = [];
   second_innings_runs: any[] = [];
   comparison_chart_labels : any[] = [];
@@ -45,11 +53,15 @@ export class MatchdetailComponent implements OnInit {
   public wicket2_balls : any[] = [];
 
   public overLabels : Label[] = [];
+  public pieChartLabels : Label[] = ['ones', 'twos', 'fours', 'sixes'];
+  public pieChartType : ChartType = 'pie';
 
   public comparison_chart : ChartType = 'line';
   public barchartLegend = true;
 
   public comparisonChartData : ChartDataSets[] = [];
+  public pieChartData1 : ChartDataSets[] = [];
+  public pieChartData2 : ChartDataSets[] = [];
 
   displayedColumn = ["batter", "runs", "fours", "sixes"];
   displayedColumn2 = ["bowler", "balls_bowled", "runs_given", "wickets"];
@@ -60,7 +72,9 @@ export class MatchdetailComponent implements OnInit {
 
   constructor(public route : ActivatedRoute, public cricserv : CricketService) { }
   
-  
+  // getPointRad(context : any) : number {
+  //   if()
+  // }
 
   ngOnInit(): void {
     this.match_id = Number(this.route.snapshot.paramMap.get('match_id'));
@@ -74,24 +88,29 @@ export class MatchdetailComponent implements OnInit {
         this.first_innings_bowl = answer['first_bowl']['rows'];
         this.second_innings_bowl = answer['second_bowl']['rows'];
 
+        // team1 vs team2
+        this.team1_name = answer['teams']['team1_name'];
+        this.team2_name = answer['teams']['team2_name'];
+        this.season_year = Number(answer['teams']['season_year']);
+
         this.answer_dump = answer['runs1']['rows'];
         this.second_innings_runs.push(0);
         this.first_innings_runs.push(0);
-        for(var i=0;i<this.answer_dump.length;i+=1){
+        for(var i=0;i<this.answer_dump.length;i+=6){
           this.first_innings_runs.push(Number(this.answer_dump[i]["?column?"]));
           // this.first_innings_runs.push(5);
         }
         this.answer_dump = answer['runs2']['rows'];
-        for(var i=0;i<this.answer_dump.length;i+=1){
+        for(var i=0;i<this.answer_dump.length;i+=6){
           this.second_innings_runs.push(Number(this.answer_dump[i]["?column?"]));
           // this.first_innings_runs.push(5);
         }
         var n1 = this.first_innings_runs.length;
         var n2 = this.second_innings_runs.length;
-        for(var i=0; i<n1-n2;i++){
+        for(var i=0; i<n1-n2;i+=1){
           this.second_innings_runs.push(this.second_innings_runs[n2-1]);
         }
-        for(var i=0;i<n2-n1;i++){
+        for(var i=0;i<n2-n1;i+=1){
           this.first_innings_runs.push(this.first_innings_runs[n1-1]);  
         }
         for(var i=0;i<this.first_innings_runs.length;i++){
@@ -100,25 +119,97 @@ export class MatchdetailComponent implements OnInit {
         this.overLabels = this.comparison_chart_labels;
         let l = answer['wickets1']['rows'];
         for(var i=0;i<l.length;i++){
-          this.wicket1_balls.push(Number(l[i]['rn']));
+          this.wicket1_balls.push(Number(l[i]['over_id']));
         }
         l = answer['wickets2']['rows'];
         for(var i=0;i<l.length;i++){
-          this.wicket2_balls.push(Number(l[i]['rn']));
+          this.wicket2_balls.push(Number(l[i]['over_id']));
         }
+        
         
         console.log("bhadwa madarchod");
         console.log(this.first_innings_runs);
         console.log(this.second_innings_runs);
-        this.comparisonChartData = [{data : this.first_innings_runs, label : "first innings score", pointRadius : 0}, {data : this.second_innings_runs, label : "second innings score", pointRadius : 0}];
+        let l1 = [];
+        for(var i=0;i<this.first_innings_runs.length; i++){
+          for(var j=0;j<this.wicket1_balls.length;j++){
+            if(i == this.wicket1_balls[j]){
+              l1.push(5);
+              break;
+            }
+          }
+          if(l1.length == i)l1.push(0);
+        }
+        let l2 = [];
+        for(var i=0;i<this.second_innings_runs.length; i++){
+          for(var j=0;j<this.wicket2_balls.length;j++){
+            if(i == this.wicket2_balls[j]){
+              l2.push(5);
+              break;
+            }
+          }
+          if(l2.length == i)l2.push(0);
+        }
+        this.comparisonChartData = [{data : this.first_innings_runs, label : "first innings score", pointRadius : l1}, {data : this.second_innings_runs, label : "second innings score", pointRadius : l2}];
         
         this.first_innings_top_bat = answer['batsmen1']['rows'];
         this.first_innings_top_bowl = answer['bowler1']['rows'];
         this.second_innings_top_bat = answer['batsmen2']['rows'];
         this.second_innings_top_bowl = answer['bowler2']['rows'];
-        console.log("lodu lalit");
-        console.log(this.first_innings_top_bowl);
-        console.log(answer['bowler1']['rows']);
+        
+        //pie chart
+        let l1_pie = [0, 0, 0, 0, 0];
+        let l2_pie = [0, 0, 0, 0, 0];
+        this.answer_dump = answer['runs1_split']['rows'];
+        for(var i=0;i<this.answer_dump.length;i++){
+          if(this.answer_dump[i]['runs_scored'] == 1){
+            l1_pie[0] += Number(this.answer_dump[i]['tot_runs']);
+          }
+          if(this.answer_dump[i]['runs_scored'] == 2){
+            l1_pie[1] += Number(this.answer_dump[i]['tot_runs']);
+          }
+          if(this.answer_dump[i]['runs_scored'] == 4){
+            l1_pie[2] += Number(this.answer_dump[i]['tot_runs']);
+          }
+          if(this.answer_dump[i]['runs_scored'] == 6){
+            l1_pie[3] += Number(this.answer_dump[i]['tot_runs']);
+          }
+        }
+        l1_pie[4] += Number(answer['extra1']['rows']['sum_ex']);
+
+        this.answer_dump = answer['runs2_split']['rows'];
+        for(var i=0;i<this.answer_dump.length;i++){
+          if(this.answer_dump[i]['runs_scored'] == 1){
+            l2_pie[0] += Number(this.answer_dump[i]['tot_runs']);
+          }
+          if(this.answer_dump[i]['runs_scored'] == 2){
+            l2_pie[1] += Number(this.answer_dump[i]['tot_runs']);
+          }
+          if(this.answer_dump[i]['runs_scored'] == 4){
+            l2_pie[2] += Number(this.answer_dump[i]['tot_runs']);
+          }
+          if(this.answer_dump[i]['runs_scored'] == 6){
+            l2_pie[3] += Number(this.answer_dump[i]['tot_runs']);
+          }
+        }
+        l2_pie[4] += Number(answer['extra2']['rows']['sum_ex']);
+
+
+        this.pieChartData1 = [
+          {
+            data : l1_pie,
+            label : 'Team1'
+          },
+          
+        ];
+        this.pieChartData2 = [
+          {
+            data : l2_pie,
+            label : 'Team2'
+          }
+        ]
+
+
       }
     })
     

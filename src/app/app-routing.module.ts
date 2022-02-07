@@ -10,10 +10,10 @@ import { VenuedetailComponent } from './venuedetail/venuedetail.component';
 
 const routes: Routes = [
   {path : '', pathMatch : 'full', redirectTo : 'players'},
-  {path : 'matches', component : MatchComponent},
-  {path : 'players', component : PlayerComponent},
   {path : 'matches/:match_id', component : MatchdetailComponent},
   {path : 'players/:player_id', component : PlayerdetailComponent},
+  {path : 'matches', component : MatchComponent},
+  {path : 'players', component : PlayerComponent},
   {path : 'venues', component : VenueComponent},
   {path : 'venues/:venue_id', component : VenuedetailComponent}
 ];

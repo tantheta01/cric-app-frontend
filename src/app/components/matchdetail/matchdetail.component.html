@@ -1,7 +1,13 @@
+<h1 align:center>
+<u>ScoreCard</u>  
+</h1>
+
 <div class="splitscreen">
+  
   <div class="left">
+
       <div *ngIf="first_innings_bat.length &gt; 0">
-      <h2>First Innings Bat</h2>>
+      <h2>First Innings Bat</h2>
       <!-- FF1 -->
       <table mat-table [dataSource] = "first_innings_bat" class="mat-elevation-z8 demo-table">
         <ng-container matColumnDef="batter">
@@ -124,8 +130,23 @@
       <!-- FF2 -->
   </div>
 </div>
+<br>
+<h3> 
+  Match Info Section
+</h3>
+<i>
+  {{team1_name}} VS {{team2_name}}
+</i>
+<h1>
+  <u>
+    Score Comparison
 
-
+  </u>
+  <i>
+    {{match_id}} - IPL - {{season_year}}
+  </i>
+</h1>
+<br>
 <div>
   <div style="display: block">
       <canvas baseChart 
@@ -228,6 +249,37 @@
   </div>
   </div>
 </div>
+<br>
+<div>
+  <span><h4>Innings 1</h4></span>
+  <div style="display: block">
+      <canvas baseChart 
+  [datasets]="pieChartData1"
+  [labels]="pieChartLabels"
+  [chartType]="pieChartType"
+  
+  >
+</canvas>
+  </div>
+
+</div>
+<br>
+<br>
+<div>
+  <h4>Innings 2</h4>
+  <div style="display: block">
+      <canvas baseChart 
+  [datasets]="pieChartData2"
+  [labels]="pieChartLabels"
+  [chartType]="pieChartType"
+  
+  >
+</canvas>
+  </div>
+
+</div>
+
+
 
 
 
