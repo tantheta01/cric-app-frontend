@@ -1,0 +1,44 @@
+<h1>
+    <u>
+        Season Years
+    </u>
+</h1>
+
+<table mat-table [dataSource] = "all_years" class="mat-elevation-z8 demo-table">
+    <ng-container matColumnDef="season_year">
+        
+        <th mat-header-cell *matHeaderCellDef> Season Year </th>
+        <td mat-cell *matCellDef="let element"> <a [routerLink]="[element['season_year']]">  {{element["season_year"]}} </a> </td>
+    
+      </ng-container>
+    
+      <!-- <ng-container matColumnDef="Matches Played">
+        <th mat-header-cell *matHeaderCellDef> Runs </th>
+        <td mat-cell *matCellDef="let element"> {{element["nmatches"]}} </td>
+      </ng-container>
+    
+      <ng-container matColumnDef="Wins">
+        <th mat-header-cell *matHeaderCellDef> Wins </th>
+        <td mat-cell *matCellDef="let element"> {{element["totwins"]}} </td>
+      </ng-container>
+    
+      <ng-container matColumnDef="Losses">
+        <th mat-header-cell *matHeaderCellDef> Losses </th>
+        <td mat-cell *matCellDef="let element"> {{element["totloss"]}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="Points">
+        <th mat-header-cell *matHeaderCellDef> Points </th>
+        <td mat-cell *matCellDef="let element"> {{element["points"]}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="NRR">
+        <th mat-header-cell *matHeaderCellDef> Net RR </th>
+        <td mat-cell *matCellDef="let element"> {{element["trr"]}} </td>
+      </ng-container> -->
+    
+      <tr mat-header-row *matHeaderRowDef="columns_display"></tr>
+      <tr mat-row *matRowDef="let row; columns: columns_display;"></tr>
+    
+</table>
+

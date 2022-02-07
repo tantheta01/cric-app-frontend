@@ -24,6 +24,7 @@ import { MatchsummaryComponent } from './components/matchsummary/matchsummary.co
 import { ToptoolbarComponent } from './components/toptoolbar/toptoolbar.component';
 import { PlayerdetailComponent } from './components/playerdetail/playerdetail.component';
 import { VenuedetailComponent } from './venuedetail/venuedetail.component';
+import { PointslandingComponent } from './components/pointslanding/pointslanding.component';
 
 @NgModule({
   declarations: [
@@ -37,6 +38,7 @@ import { VenuedetailComponent } from './venuedetail/venuedetail.component';
     ToptoolbarComponent,
     PlayerdetailComponent,
     VenuedetailComponent,
+    PointslandingComponent,
   ],
   imports: [
     AppRoutingModule,

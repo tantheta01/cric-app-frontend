@@ -51,5 +51,8 @@ export class CricketService {
   fetch_pointstable(season_year : number) : Observable<any> {
     return this.httpClient.get(`http://localhost:3000/pointstable/${season_year}`);
   }
+  fetch_years() : Observable<any> {
+    return this.httpClient.get('http://localhost:3000/pointstable');
+  }
   
 }
